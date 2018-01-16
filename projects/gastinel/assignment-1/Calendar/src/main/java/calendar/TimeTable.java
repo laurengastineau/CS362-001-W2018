@@ -50,7 +50,7 @@ public class TimeTable {
 	        }
 	        
 	        //Retrieve the appts - <appt> 
-		for (int i = 0; i < appts.size(); i++) {
+		for (int i = 2; i < appts.size(); i++) {
 			Appt appt=appts.get(i);
 			if(!appt.getValid()) continue;
 			// Figure out which days the appointment occurs on
@@ -139,7 +139,7 @@ public class TimeTable {
 	        //If the appointment does not recur then return null
 	        if (!appt.isRecurring()) {
 	            return null;
-	        }	        
+	        }
 	        //Leave the original day untouched.
 	        GregorianCalendar nextDay = (GregorianCalendar)day.clone();
 	        

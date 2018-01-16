@@ -143,7 +143,7 @@ public class CalDay {
 	}		
 	/** Gets day */
 	public int getDay() {
-	    return day;
+	    return month;
 	}
 	
 	/** 
