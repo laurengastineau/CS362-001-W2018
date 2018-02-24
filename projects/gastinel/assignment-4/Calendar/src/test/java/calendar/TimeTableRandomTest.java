@@ -1,9 +1,7 @@
 package calendar;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.LinkedList;
-import java.util.Random;
+import java.sql.Time;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -51,82 +49,157 @@ public class TimeTableRandomTest {
 	/**
      * Generate Random Tests that tests TimeTable Class.
      */
-	 @Test
-	  public void radnomtest()  throws Throwable  {
-	 	long startTime = Calendar.getInstance().getTimeInMillis();
-		long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
 
-		TimeTable timeTable = new TimeTable();
+//	@Test
+//	public void radnomtestTimeTable()  throws Throwable {
+//		long startTime = Calendar.getInstance().getTimeInMillis();
+//		long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
+//
+//		System.out.println("Start testing...");
+//
+//		try {
+//			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
+//				long randomseed = System.currentTimeMillis(); //10
+//				//			System.out.println(" Seed:"+randomseed );
+//				Random random = new Random(randomseed);
+//
+//				int startHour = ValuesGenerator.RandInt(random);
+//				int startMinute = ValuesGenerator.RandInt(random);
+//				int startDay = ValuesGenerator.RandInt(random);
+//				int startMonth = ValuesGenerator.getRandomIntBetween(random, 1, 12);
+//				int startYear = ValuesGenerator.RandInt(random);
+//				String title = "Birthday Party";
+//				String description = "This is my birthday party.";
+//
+//				//Construct a new Gregorian object with initial data
+////				GregorianCalendar today = new GregorianCalendar(startYear, startMonth, startDay);
+////				GregorianCalendar tomorrow = new GregorianCalendar(startYear, startMonth, startDay);
+//
+//
+//				GregorianCalendar today = new GregorianCalendar(startYear, 2, 20);
+//				GregorianCalendar tomorrow = new GregorianCalendar(startYear, 1, 10);
+//
+//				//Construct a new Appointment object with the initial data
+//				Appt appt = new Appt(startHour, startMinute, startDay, startMonth, startYear, title, description);
+////				Appt appt2 = null;
+//				Appt appt3 = new Appt(-1, 61, startDay, startMonth, startYear, title, description);
+//
+////				elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
+////				if ((iteration % 10000) == 0 && iteration != 0)
+////					System.out.println("elapsed time: " + elapsed + " of " + TestTimeout);
+//
+//				//Construct new LinkedList<Appt> object
+//				LinkedList<Appt> listAppts = new LinkedList<Appt>();
+//				//Construct null LinkedList<Appt>
+//				LinkedList<Appt> nullListAppts = null;
+//
+//				//Add initialized appt to listAppts
+//				listAppts.add(appt);
+//				listAppts.add(appt);
+//				listAppts.add(appt);
+//				//Add null appt to listAppts
+//				listAppts.add(null);
+//				//Add invalid appt to listAppts
+//				listAppts.add(appt3);
+//
+//				//Construct new timetable object
+//				TimeTable timeTable = new TimeTable();
+//				try {
+//					timeTable.getApptRange(listAppts, today, tomorrow);
+//				}
+//				catch (DateOutOfRangeException e) {
+//					continue;
+//				}
+//				/*
+//				//Delete initialized appt from listAppts
+//				timeTable.deleteAppt(listAppts, appt);
+//				//Delete null appt from listAppts
+//				timeTable.deleteAppt(listAppts, null);
+//				//Delete null appt from nullListAppts
+//				timeTable.deleteAppt(nullListAppts, null);
+//				//Delete initialzied appt from nullListAppts
+//				timeTable.deleteAppt(nullListAppts, appt);
+//				*/
+//				elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
+//				if ((iteration % 10000) == 0 && iteration != 0)
+//				System.out.println("elapsed time: " + elapsed + " of " + TestTimeout);
+//			}
+//		}
+//		catch(NullPointerException e){
+//		}
+//		System.out.println("Done testing...");
+//	}
+
+
+	@Test
+	public void radnomtestTimeTable1()  throws Throwable  {
+		long startTime = Calendar.getInstance().getTimeInMillis();
+		long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
 
 		System.out.println("Start testing...");
 
 		try{
+			CalDay calday = null;
 			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
-				long randomseed =System.currentTimeMillis(); //10
+				long randomseed = System.currentTimeMillis(); //10
 				//			System.out.println(" Seed:"+randomseed );
 				Random random = new Random(randomseed);
 
-				int startHour=ValuesGenerator.RandInt(random);
-				int startMinute=ValuesGenerator.RandInt(random);
-				int startDay=ValuesGenerator.RandInt(random);;
-				int startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 12);
-				int startYear=ValuesGenerator.RandInt(random);
-				String title="Birthday Party";
-				String description="This is my birthday party.";
+				int startHour = ValuesGenerator.RandInt(random);
+				int startMinute = ValuesGenerator.RandInt(random);
+				int startDay = ValuesGenerator.RandInt(random);
+				int startMonth = ValuesGenerator.getRandomIntBetween(random, 1, 12);
+				int startYear = ValuesGenerator.RandInt(random);
+				String title = "Birthday Party";
+				String description = "This is my birthday party.";
+
+				int randDay = ValuesGenerator.getRandomIntBetween(random, 1, 30);
+				int randDay2 = ValuesGenerator.getRandomIntBetween(random, 1, 30);
+				int randMonth = ValuesGenerator.getRandomIntBetween(random, 0, 11);
+				int randMonth2 = ValuesGenerator.getRandomIntBetween(random, 0, 11);
 
 				//Construct a new Gregorian object with initial data
-				GregorianCalendar today = new GregorianCalendar(startYear, startMonth, startDay);
-				GregorianCalendar tomorrow = new GregorianCalendar(startYear, startMonth, startDay);
+				GregorianCalendar today = new GregorianCalendar(startYear, randMonth, randDay);
+				GregorianCalendar tomorrow = new GregorianCalendar(startYear, randMonth2, randDay2);
 
 				//Construct a new Appointment object with the initial data
-				Appt appt = new Appt(startHour, startMinute , startDay , startMonth , startYear , title, description);
-
-				if(!appt.getValid())continue;
-				for (int i = 0; i < NUM_TESTS; i++) {
-					String methodName = ApptRandomTest.RandomSelectMethod(random);
-					if (methodName.equals("setTitle")){
-						String newTitle=(String) ValuesGenerator.getString(random);
-						appt.setTitle(newTitle);
-					}
-					else if (methodName.equals("setRecurrence")){
-						int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
-						int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
-						int recur=ApptRandomTest.RandomSelectRecur(random);
-						int recurIncrement = ValuesGenerator.RandInt(random);
-						int recurNumber=ApptRandomTest.RandomSelectRecurForEverNever(random);
-						appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
-					}
-				}
-
-				elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
-				if((iteration%10000)==0 && iteration!=0 )
-					System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
+				Appt appt = new Appt(startHour, startMinute, startDay, startMonth, startYear, title, description);
+				Appt appt3 = new Appt(-1, 61, startDay, startMonth, startYear, title, description);
 
 				//Construct new LinkedList<Appt> object
 				LinkedList<Appt> listAppts = new LinkedList<Appt>();
 				//Construct null LinkedList<Appt>
 				LinkedList<Appt> nullListAppts = null;
-				Appt appt2 = null;
 
 				//Add initialized appt to listAppts
 				listAppts.add(appt);
-				//Add null appt to listAppts
-				listAppts.add(appt2);
-				//Add null appt to nullListAppts
-				nullListAppts.add(appt2);
-				//Add initialized appt to nullListAppts
-				nullListAppts.add(appt);
-				//Add repreated appt to listAppts
 				listAppts.add(appt);
+				listAppts.add(appt);
+				//Add invalid appt to listAppts
+				listAppts.add(appt3);
+
+				//Construct new timetable object
+				TimeTable timeTable = new TimeTable();
+				try {
+					timeTable.getApptRange(listAppts, today, tomorrow);
+				}
+				catch (DateOutOfRangeException e) {
+					continue;
+				}
 
 				//Delete initialized appt from listAppts
 				timeTable.deleteAppt(listAppts, appt);
 				//Delete null appt from listAppts
-				timeTable.deleteAppt(listAppts, appt2);
+				timeTable.deleteAppt(listAppts, null);
 				//Delete null appt from nullListAppts
-				timeTable.deleteAppt(nullListAppts, appt2);
+				timeTable.deleteAppt(nullListAppts, null);
 				//Delete initialzied appt from nullListAppts
 				timeTable.deleteAppt(nullListAppts, appt);
+
+
+				elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
+				if((iteration%10000)==0 && iteration!=0 )
+					System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
 			}
 		}
 		catch(NullPointerException e){
