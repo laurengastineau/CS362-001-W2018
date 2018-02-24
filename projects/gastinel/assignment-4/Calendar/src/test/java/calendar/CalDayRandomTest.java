@@ -54,67 +54,67 @@ public class CalDayRandomTest {
      */
 	@Test
 	public void radnomtestCalDay()  throws Throwable  {
-//		long startTime = Calendar.getInstance().getTimeInMillis();
-//		long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
-//
-//		System.out.println("Start testing...");
-//
-//		try{
-//			CalDay calday = null;
-//			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
-//				long randomseed =System.currentTimeMillis(); //10
-//				//			System.out.println(" Seed:"+randomseed );
-//				Random random = new Random(randomseed);
-//
-//				int startHour=ValuesGenerator.RandInt(random);
-//				int startMinute=ValuesGenerator.RandInt(random);
-//				int startDay=ValuesGenerator.RandInt(random);;
-//				int startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 12);
-//				int startYear=ValuesGenerator.RandInt(random);
-//				String title="Birthday Party";
-//				String description="This is my birthday party.";
-//
-//				//Construct a new Gregorian object with initial data
-//				GregorianCalendar today = new GregorianCalendar(startYear, startMonth, startDay);
-//				if(calday == null){
-//
-//					//Construct a new Calday object with initial data
-//					calday= new CalDay(today);
-//				}
-//
-//				//Construct a new Appointment object with the initial data
-//				Appt appt = new Appt(startHour, startMinute , startDay , startMonth , startYear , title, description);
-//
-//				//Add appt to calday
-//				calday.addAppt(appt);
-//
-//				if(!appt.getValid())continue;
-//				for (int i = 0; i < NUM_TESTS; i++) {
-//					String methodName = CalDayRandomTest.RandomSelectMethod(random);
-//					if (methodName.equals("setTitle")){
-//						String newTitle=(String) ValuesGenerator.getString(random);
-//						appt.setTitle(newTitle);
-//					}
-//					else if (methodName.equals("setRecurrence")){
-//						int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
-//						int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
-//						int recur=CalDayRandomTest.RandomSelectRecur(random);
-//						int recurIncrement = ValuesGenerator.RandInt(random);
-//						int recurNumber=CalDayRandomTest.RandomSelectRecurForEverNever(random);
-//						appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
-//					}
-//				}
-//				calday.addAppt(appt);
-//
-//				elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
-//				if((iteration%10000)==0 && iteration!=0 )
-//					System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
-//			}
-//		}
-//		catch(NullPointerException e){
-//		}
-//
-//		System.out.println("Done testing...");
+		long startTime = Calendar.getInstance().getTimeInMillis();
+		long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
+
+		System.out.println("Start testing...");
+
+		try{
+			CalDay calday = null;
+			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
+				long randomseed =System.currentTimeMillis(); //10
+				//			System.out.println(" Seed:"+randomseed );
+				Random random = new Random(randomseed);
+
+				int startHour=ValuesGenerator.RandInt(random);
+				int startMinute=ValuesGenerator.RandInt(random);
+				int startDay=ValuesGenerator.RandInt(random);;
+				int startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 12);
+				int startYear=ValuesGenerator.RandInt(random);
+				String title="Birthday Party";
+				String description="This is my birthday party.";
+
+				//Construct a new Gregorian object with initial data
+				GregorianCalendar today = new GregorianCalendar(startYear, startMonth, startDay);
+				if(calday == null){
+
+					//Construct a new Calday object with initial data
+					calday= new CalDay(today);
+				}
+
+				//Construct a new Appointment object with the initial data
+				Appt appt = new Appt(startHour, startMinute , startDay , startMonth , startYear , title, description);
+
+				//Add appt to calday
+				calday.addAppt(appt);
+
+				if(!appt.getValid())continue;
+				for (int i = 0; i < NUM_TESTS; i++) {
+					String methodName = CalDayRandomTest.RandomSelectMethod(random);
+					if (methodName.equals("setTitle")){
+						String newTitle=(String) ValuesGenerator.getString(random);
+						appt.setTitle(newTitle);
+					}
+					else if (methodName.equals("setRecurrence")){
+						int sizeArray=ValuesGenerator.getRandomIntBetween(random, 0, 8);
+						int[] recurDays=ValuesGenerator.generateRandomArray(random, sizeArray);
+						int recur=CalDayRandomTest.RandomSelectRecur(random);
+						int recurIncrement = ValuesGenerator.RandInt(random);
+						int recurNumber=CalDayRandomTest.RandomSelectRecurForEverNever(random);
+						appt.setRecurrence(recurDays, recur, recurIncrement, recurNumber);
+					}
+				}
+				calday.addAppt(appt);
+
+				elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
+				if((iteration%10000)==0 && iteration!=0 )
+					System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
+			}
+		}
+		catch(NullPointerException e){
+		}
+
+		System.out.println("Done testing...");
 	}
 
 
