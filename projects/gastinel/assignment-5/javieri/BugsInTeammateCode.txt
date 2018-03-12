@@ -1,0 +1,14 @@
+Lauren Gastineau
+
+Bug 1 (one line 113 of Appt.java):
+The bug was: int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth+1).
+The correct code would be: int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth-1).
+
+Bug 2 (on line 152 of Appt.java):
+The bug is: this.startDay = this.startMonth 
+The correct code would be: this.startDay = startDay.
+
+Bug 3(on line 77 of CalDay.java):
+The bug is: if (((Appt)getAppts().get(i)).getStartHour() < appt.getStartHour()){…}
+The correct code would be: if (((Appt)getAppts().get(i)).getStartHour() > appt.getStartHour()){…}
+
